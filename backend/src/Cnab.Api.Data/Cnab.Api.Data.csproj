@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Cnab.Api.Domain\Cnab.Api.Domain.csproj" />
+    <ProjectReference Include="..\Cnab.Api.Domain\Cnab.Api.Domain.csproj" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">

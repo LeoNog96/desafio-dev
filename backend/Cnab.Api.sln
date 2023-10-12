@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Infraestructure Layer",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. Tests Layer", "05. Tests Layer", "{884A41DD-89FB-4AC4-AC01-818AE0B1290F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.WebApi", "Cnab.Api.WebApi\Cnab.Api.WebApi.csproj", "{EA43B0BA-6F3A-4AD2-9228-E294D692AA66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.WebApi", "src\Cnab.Api.WebApi\Cnab.Api.WebApi.csproj", "{EA43B0BA-6F3A-4AD2-9228-E294D692AA66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Domain", "Cnab.Api.Domain\Cnab.Api.Domain.csproj", "{AB2264FD-4942-47E0-A62B-B7AD0C19D162}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Domain", "src\Cnab.Api.Domain\Cnab.Api.Domain.csproj", "{AB2264FD-4942-47E0-A62B-B7AD0C19D162}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Contracts", "src\Cnab.Api.Contracts\Cnab.Api.Contracts.csproj", "{34B815AA-A0AD-44D8-AEAD-3B042061C4A2}"
 EndProject

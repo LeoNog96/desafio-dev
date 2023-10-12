@@ -51,45 +51,42 @@ namespace Cnab.Api.Data.Repositories
             }
         }
 
-        public async Task<PaginateBaseDto<Transaction>> ListPaginateAsync(
+        public async Task<PaginateBaseDto<ListTransactionDto>> ListPaginateAsync(
             PaginateTransactionFilterDto filterDto,
             CancellationToken cancellationToken = default)
         {
             try
             {
-                var key = $"{filterDto.PageNumber}_{filterDto.PageSize}{filterDto.StartDate}{filterDto.EndDate}{filterDto.Type}";
-                var transactionsPaginate = await _cacheService
-                    .GetCacheAsync<PaginateBaseDto<Transaction>>(key);
-
-                if (transactionsPaginate == null)
-                {
-
-                    var query = _db.Transactions
+                var query = _db.Transactions
                         .Where(transaction =>
                             (!filterDto.Type.HasValue || transaction.Type == filterDto.Type) &&
                             (!filterDto.StartDate.HasValue || transaction.Date >= filterDto.StartDate) &&
-                            (!filterDto.EndDate.HasValue || transaction.Date >= filterDto.EndDate)
+                            (!filterDto.EndDate.HasValue || transaction.Date <= filterDto.EndDate)
                         )
-                        .OrderByDescending(x => x.CreatedAt);
-                    var total = query.Count();
+                        .Include(x => x.User)
+                        .OrderByDescending(x => x.CreatedAt)
+                        .Select(x => new ListTransactionDto
+                        {
+                            Card = x.Card,
+                            Type = x.Type,
+                            StoreName = x.StoreName,
+                            Cpf = x.Cpf,
+                            Date = x.Date,
+                            StoreOwner = x.StoreOwner,
+                            Value = x.Value,
+                            UploadedBy = x.User.Name,
+                        });
+                var total = query.Count();
 
-                    var listTake = query
-                        .Skip(filterDto.PageSize * (filterDto.PageNumber - 1))
-                        .Take(filterDto.PageSize);
+                var listTake = query
+                    .Skip(filterDto.PageSize * (filterDto.PageNumber - 1))
+                    .Take(filterDto.PageSize);
 
-                    transactionsPaginate = new PaginateBaseDto<Transaction>(
-                        listTake,
-                        total,
-                        filterDto.PageNumber,
-                        filterDto.PageSize);
-
-                    await _cacheService
-                        .SetCacheAsync(
-                            transactionsPaginate,
-                            TimeSpan.FromDays(15),
-                            key
-                            );
-                }
+                var transactionsPaginate = new PaginateBaseDto<ListTransactionDto>(
+                    listTake,
+                    total,
+                    filterDto.PageNumber,
+                    filterDto.PageSize);
 
                 return transactionsPaginate;
             }

@@ -19,6 +19,7 @@ namespace Cnab.Api.Data.Extensions
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<ITransactionTypeRepository, TransactionTypeRepository>();
         }
     }
 }

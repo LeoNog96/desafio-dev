@@ -11,7 +11,8 @@ namespace Cnab.Api.Data.Context.Configurations
             builder.ToTable("users");
             builder.Property(e => e.Id).IsRequired().HasColumnName("id");
             builder.Property(e => e.Login).IsRequired().HasMaxLength(50).HasColumnName("login");
-            builder.Property(e => e.Password).IsRequired().HasMaxLength(10).HasColumnName("password");
+            builder.Property(e => e.Name).IsRequired().HasMaxLength(50).HasColumnName("name");
+            builder.Property(e => e.Password).IsRequired().HasMaxLength(100).HasColumnName("password");
             
             builder.Property(e => e.CreatedAt).IsRequired().HasColumnName("created_at");
             builder.Property(e => e.UpdatedAt).IsRequired(false).HasColumnName("updated_at");

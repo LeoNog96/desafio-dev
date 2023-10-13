@@ -4,7 +4,6 @@ using Cnab.Api.Domain.NotificationPattern;
 using Cnab.Api.Domain.Repositories;
 using Cnab.Api.Domain.Services;
 using Microsoft.Extensions.Logging;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Cnab.Api.Services
 {
@@ -23,10 +22,10 @@ namespace Cnab.Api.Services
 
         public async Task<IEnumerable<Transaction>> ProccessFileAsync(Stream stream, Guid userId)
         {
-            var transactionsTypes = await _transactionTypeRepository.ListAsync();
             List<Transaction> transactions = new();
             try
             {
+                var transactionsTypes = await _transactionTypeRepository.ListAsync();
                 using (StreamReader reader = new(stream))
                 {
                     while (!reader.EndOfStream)
@@ -58,7 +57,7 @@ namespace Cnab.Api.Services
 
                 return transactions;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
                 _notificationContext.AddNotification("Falha ao processar o arquivo", "arquivo corrompido ou com formato diferente");

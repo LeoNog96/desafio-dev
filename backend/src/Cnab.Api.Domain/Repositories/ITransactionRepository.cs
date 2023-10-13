@@ -1,6 +1,5 @@
 ﻿using Cnab.Api.Domain.Dtos;
 using Cnab.Api.Domain.Entities;
-using System.Linq.Expressions;
 
 namespace Cnab.Api.Domain.Repositories
 {
@@ -36,6 +35,14 @@ namespace Cnab.Api.Domain.Repositories
         /// <returns></returns>
         public Task<IEnumerable<Transaction>> CreateRangeAsync(
             IEnumerable<Transaction> transaction,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Listar Transacoes agrupadas por loja
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IEnumerable<ListTransactionPerStoreDto>> ListTransactionPerStore(
             CancellationToken cancellationToken = default);
     }
 }

@@ -15,21 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Infraestructure Layer",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. Tests Layer", "05. Tests Layer", "{884A41DD-89FB-4AC4-AC01-818AE0B1290F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.WebApi", "src\Cnab.Api.WebApi\Cnab.Api.WebApi.csproj", "{EA43B0BA-6F3A-4AD2-9228-E294D692AA66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.WebApi", "src\Cnab.Api.WebApi\Cnab.Api.WebApi.csproj", "{EA43B0BA-6F3A-4AD2-9228-E294D692AA66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Domain", "src\Cnab.Api.Domain\Cnab.Api.Domain.csproj", "{AB2264FD-4942-47E0-A62B-B7AD0C19D162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Domain", "src\Cnab.Api.Domain\Cnab.Api.Domain.csproj", "{AB2264FD-4942-47E0-A62B-B7AD0C19D162}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Contracts", "src\Cnab.Api.Contracts\Cnab.Api.Contracts.csproj", "{34B815AA-A0AD-44D8-AEAD-3B042061C4A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Contracts", "src\Cnab.Api.Contracts\Cnab.Api.Contracts.csproj", "{34B815AA-A0AD-44D8-AEAD-3B042061C4A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Application", "src\Cnab.Api.Application\Cnab.Api.Application.csproj", "{9CB3C596-F53A-4B2C-9D3B-9997252770A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Application", "src\Cnab.Api.Application\Cnab.Api.Application.csproj", "{9CB3C596-F53A-4B2C-9D3B-9997252770A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Services", "src\Cnab.Api.Services\Cnab.Api.Services.csproj", "{7C606FEF-A56B-4627-B63F-8642472086DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Services", "src\Cnab.Api.Services\Cnab.Api.Services.csproj", "{7C606FEF-A56B-4627-B63F-8642472086DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Data", "src\Cnab.Api.Data\Cnab.Api.Data.csproj", "{1533B494-C420-46CC-9EBD-40710DE328E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Data", "src\Cnab.Api.Data\Cnab.Api.Data.csproj", "{1533B494-C420-46CC-9EBD-40710DE328E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Cache", "src\Cnab.Api.Cache\Cnab.Api.Cache.csproj", "{9CFCFAA9-9F67-4919-9805-7DAD24BC02DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Cache", "src\Cnab.Api.Cache\Cnab.Api.Cache.csproj", "{9CFCFAA9-9F67-4919-9805-7DAD24BC02DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Logs", "src\Cnab.Api.Logs\Cnab.Api.Logs.csproj", "{033AB02D-5010-4C6A-AFF4-B4C439FC4623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cnab.Api.Logs", "src\Cnab.Api.Logs\Cnab.Api.Logs.csproj", "{033AB02D-5010-4C6A-AFF4-B4C439FC4623}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnab.Api.Test", "src\Cnab.Api.Test\Cnab.Api.Test.csproj", "{ABFFE363-7D4D-484B-AB88-6DADBC88617C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{033AB02D-5010-4C6A-AFF4-B4C439FC4623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{033AB02D-5010-4C6A-AFF4-B4C439FC4623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{033AB02D-5010-4C6A-AFF4-B4C439FC4623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFFE363-7D4D-484B-AB88-6DADBC88617C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFFE363-7D4D-484B-AB88-6DADBC88617C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFFE363-7D4D-484B-AB88-6DADBC88617C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFFE363-7D4D-484B-AB88-6DADBC88617C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{1533B494-C420-46CC-9EBD-40710DE328E4} = {D1BED8D4-F0AC-423B-A048-6768B77E9B66}
 		{9CFCFAA9-9F67-4919-9805-7DAD24BC02DF} = {D1BED8D4-F0AC-423B-A048-6768B77E9B66}
 		{033AB02D-5010-4C6A-AFF4-B4C439FC4623} = {D1BED8D4-F0AC-423B-A048-6768B77E9B66}
+		{ABFFE363-7D4D-484B-AB88-6DADBC88617C} = {884A41DD-89FB-4AC4-AC01-818AE0B1290F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C39712E8-648F-41FD-A68E-508EFCCEA944}

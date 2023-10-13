@@ -38,11 +38,13 @@ namespace Cnab.Api.WebApi.Controllers.V1
         [Produces("application/json")]
         [ProducesResponseType(typeof(AuthenticateCommandResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotificationResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post([FromBody] AuthenticateCommandRequest request)
+        public async Task<IActionResult> Post(
+            [FromBody] AuthenticateCommandRequest request,
+            CancellationToken cancellation)
         {
             try
             {
-                var response = await _mediator.Send(request);
+                var response = await _mediator.Send(request, cancellation);
 
                 return Ok(response);
             }

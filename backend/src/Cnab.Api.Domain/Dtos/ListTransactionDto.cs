@@ -4,7 +4,7 @@ namespace Cnab.Api.Domain.Dtos
 {
     public class ListTransactionDto
     {
-        public ETransactionType Type { get; set; }
+        public string Type { get; set; }
         public DateTime Date { get; set; }
         public double Value { get; set; }
         public string Cpf { get; set; }

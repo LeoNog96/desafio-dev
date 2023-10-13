@@ -34,11 +34,13 @@ namespace Cnab.Api.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(typeof(NotificationResponse), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(NotificationResponse), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Post([FromForm] UploadTransactionCommandRequest request)
+        public async Task<IActionResult> Post(
+            [FromForm] UploadTransactionCommandRequest request,
+            CancellationToken cancellation)
         {
             try
             {
-                await _mediator.Send(request);
+                await _mediator.Send(request, cancellation);
 
                 return Accepted();
             }

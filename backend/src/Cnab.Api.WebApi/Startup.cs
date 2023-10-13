@@ -23,7 +23,7 @@ namespace Cnab.Api.WebApi
 
             Configuration = builder.Build();
 
-            Log.Logger = ConfigurationLog.ConfigureLog(env, Configuration);
+            //Log.Logger = ConfigurationLog.ConfigureLog(env, Configuration);
         }
 
         public IConfiguration Configuration { get; }

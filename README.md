@@ -1,3 +1,32 @@
+# Projeto Cnab
+
+# Tecnologias Utilizadas
+- dotnet 7
+- Postgresql latest
+- VueJs 2
+- Docker
+- Redis
+
+
+### Executar Projeto
+
+Para executar todo projeto foi criado um docker-compose, antes de executar o docker-compose deve-se realizar o seguinte procedimento:
+
+* No projeto `frontend-project` existe um arquvio com o nome `.env` substituir `SEU_IP` pelo o ip da sua maquina.
+
+Após realizar o procedimento acima executar o seguinte comando na raiz do repositório:
+
+```console
+$ docker-compose up
+```
+
+Este comando irá compilar e executar o Projeto via docker.
+
+### Documentação WebApi
+
+Para Acessar a documentação REST da API basta acessar o seguinte endereço `SEU_IP:5228/swagger`.
+
+
 # Desafio programação - para vaga desenvolvedor
 
 Por favor leiam este documento do começo ao fim, com muita atenção.

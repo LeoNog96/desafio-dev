@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 var startup = new Startup(builder.Environment);
 
 startup.ConfigureServices(builder.Services);
-builder.Host.UseSerilog();
+//builder.Host.UseSerilog();
 var app = builder.Build();
 
 startup.Configure(app, app.Environment);

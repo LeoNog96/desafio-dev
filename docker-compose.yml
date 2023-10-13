@@ -15,22 +15,20 @@ services:
     image: redis
     ports:
       - "6379:6379"    
-  # api:
-  #   build: ./backend
-  #   environment: 
-  #     - ProjectManagerContextDb=Host=db;Port=5432;Database=projectmanager;Username=projectmanager;Password=projectmanager
-  #   ports:
-  #     - 5002:80
-  #   links:
-  #     - db
-  #   depends_on:
-  #     - db
+  api:
+    build: ./backend
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - 5228:80
+    links:
+      - db
+    depends_on:
+      - db
 
-  # web:
-  #   build: ./frontend
-  #   volumes:
-  #     - ./docker/nginx/:/etc/nginx/conf.d
-  #   ports:
-  #     - 7070:80
-  #   depends_on:
-  #     - api
+  web:
+    build: ./frontend-project
+    ports:
+      - 7070:80
+    depends_on:
+      - api

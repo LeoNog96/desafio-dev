@@ -26,7 +26,7 @@ namespace Cnab.Api.Data.Repositories
             {
                 _db.AddRange(transaction);
                 await _db.SaveChangesAsync(cancellationToken);
-                await _cacheService.DeleteKeysByPrefixAsync<PaginateBaseDto<Transaction>>();
+                await _cacheService.DeleteKeysByPrefixAsync<ListTransactionPerStoreDto>();
                 return transaction;
             }
             catch (Exception ex)
@@ -64,11 +64,12 @@ namespace Cnab.Api.Data.Repositories
                             (!filterDto.EndDate.HasValue || transaction.Date <= filterDto.EndDate)
                         )
                         .Include(x => x.User)
+                        .Include(t => t.TransactionType)
                         .OrderByDescending(x => x.CreatedAt)
                         .Select(x => new ListTransactionDto
                         {
                             Card = x.Card,
-                            Type = x.Type,
+                            Type = x.TransactionType.Description,
                             StoreName = x.StoreName,
                             Cpf = x.Cpf,
                             Date = x.Date,
@@ -89,6 +90,51 @@ namespace Cnab.Api.Data.Repositories
                     filterDto.PageSize);
 
                 return transactionsPaginate;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<ListTransactionPerStoreDto>> ListTransactionPerStore(
+            CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var transactions = await _cacheService.GetEnumerableCacheAsync<ListTransactionPerStoreDto>();
+
+                if (transactions == null)
+                {
+                    var rawGroupedData = await _db.Transactions
+                        .Include(t => t.TransactionType)
+                        .AsNoTracking()
+                        .GroupBy(t => new { t.StoreName, t.StoreOwner })
+                        .ToListAsync(cancellationToken);
+
+                    transactions = rawGroupedData
+                        .Select(group => new ListTransactionPerStoreDto
+                        {
+                            StoreName = group.Key.StoreName,
+                            StoreOwner = group.Key.StoreOwner,
+                            Transaction = group.AsEnumerable().Select(x => new ListTransactionDto
+                            {
+                                Card = x.Card,
+                                Type = x.TransactionType.Description,
+                                StoreName = x.StoreName,
+                                Cpf = x.Cpf,
+                                Date = x.Date,
+                                StoreOwner = x.StoreOwner,
+                                Value = x.Value
+                            })
+                        })
+                        .ToList();
+
+                    await _cacheService.SetEnumerableCacheAsync(transactions, TimeSpan.FromDays(15));
+                }
+
+                return transactions;                 
             }
             catch (Exception ex)
             {

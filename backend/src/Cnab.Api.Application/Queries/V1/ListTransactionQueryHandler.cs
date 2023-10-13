@@ -1,4 +1,5 @@
 ﻿using Cnab.Api.Contracts.Queries.Transactions;
+using Cnab.Api.Contracts.Queries.Transactions.List;
 using Cnab.Api.Domain.NotificationPattern;
 using Cnab.Api.Domain.Repositories;
 using MediatR;
